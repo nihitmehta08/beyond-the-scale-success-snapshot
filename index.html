@@ -23,7 +23,7 @@
 
 body {
   margin:0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
   background:var(--bg);
   color:var(--text);
 }
@@ -245,7 +245,7 @@ button {
     <h1>What Matters Most?</h1>
     <p class="sub">A simple success snapshot patients can complete before or during a weight care visit.</p>
     <div class="notice">
-      This is not a contract or prescription. It helps define what success means to the patient, beyond the number on the scale.
+      This is not a contract, prescription, or medical advice. It helps define what success means to the patient, beyond the number on the scale.
     </div>
   </section>
 
@@ -283,7 +283,7 @@ button {
     <input id="priority" placeholder="Example: Being able to walk without knee pain" />
 
     <label for="sixmonths">Six months from now, I would know this is working if I could...</label>
-    <textarea id="sixmonths" placeholder="Example: walk around the grocery store without needing to sit down."></textarea>
+    <textarea id="sixmonths" placeholder="Example: walk around the grocery store and climb stairs without needing to stop."></textarea>
 
     <div class="actions">
       <button class="primary" onclick="createSnapshot()">Create snapshot</button>
@@ -367,7 +367,9 @@ function createSnapshot() {
 
 function loadExample() {
   document.getElementById('name').value = 'A.M.';
-  document.getElementById('reason').value = 'I want more energy, less knee pain, and to feel more comfortable participating in family activities.';
+  document.getElementById('reason').value =
+    'I want more energy, less knee pain, and to feel more comfortable participating in family activities.';
+
   document.querySelectorAll('.option input').forEach(x => x.checked = false);
 
   ['More energy', 'Better mobility or less pain', 'Better confidence'].forEach(value => {
@@ -377,7 +379,9 @@ function loadExample() {
 
   document.getElementById('other').value = '';
   document.getElementById('priority').value = 'Walking comfortably without knee pain.';
-  document.getElementById('sixmonths').value = 'walk through the grocery store and climb stairs without needing to stop.';
+  document.getElementById('sixmonths').value =
+    'walk through the grocery store and climb stairs without needing to stop.';
+
   createSnapshot();
 }
 
