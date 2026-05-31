@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success Snapshot | Patient-Centered Weight Care</title>
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --blue: #1f5fa8;
+      --light: #f6f8fb;
+      --soft: #e8eef7;
+      --gold: #f2a900;
+      --text: #1f2937;
+      --muted: #667085;
+      --border: #d0d5dd;
+      --green: #107c41;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 18px 64px;
+    }
+
+    .hero {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 16px 40px rgba(11,31,58,0.08);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 8px 0 12px;
+      color: var(--navy);
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .sub {
+      font-size: 19px;
+      max-width: 760px;
+      color: #344054;
+    }
+
+    .note {
+      background: #fff8e6;
+      border-left: 5px solid var(--gold);
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin-top: 18px;
+      color: #4a3410;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero, .card { padding: 22px; }
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(11,31,58,0.05);
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      color: var(--navy);
+      margin: 0 0 14px;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      color: var(--navy);
+      margin: 20px 0 8px;
+      font-size: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin: 14px 0 6px;
+      color: #25324b;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 16px;
+      color: var(--text);
+      background: white;
+    }
+
+    textarea { min-height: 96px; resize: vertical; }
+
+    .examples {
+      background: var(--light);
+      border: 1px dashed #b6c3d6;
+      border-radius: 16px;
+      padding: 14px;
+      color: #344054;
+      font-size: 15px;
+    }
+
+    .pillbox {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .pillbox { grid-template-columns: 1fr; }
+    }
+
+    .pill {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: #fbfcfe;
+    }
+
+    .pill input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    .pill span {
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    button {
+      border: 0;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .secondary {
+      background: var(--soft);
+      color: var(--navy);
+    }
+
+    .success {
+      background: var(--green);
+      color: white;
+    }
+
+    .snapshot {
+      border: 2px solid var(--navy);
+      border-radius: 24px;
+      overflow: hidden;
+      background: white;
+      margin-top: 24px;
+    }
+
+    .snapshot-head {
+      background: var(--navy);
+      color: white;
+      padding: 22px;
+    }
+
+    .snapshot-head h2 {
+      color: white;
+      margin: 0;
+    }
+
+    .snapshot-body {
+      padding: 24px;
+    }
+
+    .big {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .muted { color: var(--muted); }
+
+    .footer {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 24px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .signature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .sigline {
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media print {
+      body { background: white; }
+      .hero, .input-section, .actions, .footer-intro { display: none !important; }
+      .wrap { padding: 0; }
+      .snapshot { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Patient-centered obesity care</div>
+      <h1>Success Snapshot</h1>
+      <p class="sub">
+        A one-page tool to help patients and clinicians define what success means beyond the number on the scale.
+      </p>
+      <div class="note">
+        This is not a contract. It is a shared reflection tool. Weight, labs, and medical outcomes still matter, but so do energy, function, self-esteem, sleep, confidence, and daily life.
+      </div>
+    </section>
+
+    <section class="grid input-section">
+      <div class="card">
+        <h2>1. What brings you here?</h2>
+
+        <label for="name">Name or initials</label>
+        <input id="name" placeholder="Example: A.M." />
+
+        <label for="why">In your own words, why are you pursuing weight care?</label>
+        <textarea id="why" placeholder="Example: I want to have more energy, feel comfortable in my clothes, and improve my health."></textarea>
+
+        <div class="examples">
+          <strong>Examples:</strong><br>
+          “I want to keep up with my children.”<br>
+          “I want less knee pain.”<br>
+          “I want to feel like myself again.”<br>
+          “I want better blood sugar and more stamina.”
+        </div>
+
+        <label for="timeframe">Time horizon</label>
+        <select id="timeframe">
+          <option>3 months</option>
+          <option selected>6 months</option>
+          <option>12 months</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="card">
+        <h2>2. What would feel successful?</h2>
+        <p class="muted">Choose any that matter to you.</p>
+
+        <div class="pillbox">
+          <label class="pill"><input type="checkbox" value="More energy"> <span>More energy</span></label>
+          <label class="pill"><input type="checkbox" value="Better sleep"> <span>Better sleep</span></label>
+          <label class="pill"><input type="checkbox" value="Less joint pain"> <span>Less joint pain</span></label>
+          <label class="pill"><input type="checkbox" value="Improved self-esteem"> <span>Improved self-esteem</span></label>
+          <label class="pill"><input type="checkbox" value="More confidence"> <span>More confidence</span></label>
+          <label class="pill"><input type="checkbox" value="Better mobility"> <span>Better mobility</span></label>
+          <label class="pill"><input type="checkbox" value="Improved blood sugar or labs"> <span>Improved labs</span></label>
+          <label class="pill"><input type="checkbox" value="Clothes fitting more comfortably"> <span>Clothing fit</span></label>
+          <label class="pill"><input type="checkbox" value="More strength"> <span>More strength</span></label>
+          <label class="pill"><input type="checkbox" value="Better daily function"> <span>Daily function</span></label>
+        </div>
+
+        <label for="other">Other outcome that matters to you</label>
+        <input id="other" placeholder="Example: travel comfortably, reduce medications, feel less winded" />
+      </div>
+    </section>
+
+    <section class="card input-section">
+      <h2>3. My top three goals</h2>
+
+      <label for="goal1">Goal 1</label>
+      <input id="goal1" placeholder="Example: Walk 20 minutes without stopping" />
+
+      <label for="goal2">Goal 2</label>
+      <input id="goal2" placeholder="Example: Feel less tired after work" />
+
+      <label for="goal3">Goal 3</label>
+      <input id="goal3" placeholder="Example: Improve blood sugar and feel more confident" />
+
+      <h3>One small next step</h3>
+      <input id="nextstep" placeholder="Example: Walk after dinner 3 days this week" />
+
+      <h3>What support would help?</h3>
+      <textarea id="support" placeholder="Example: I would like help with meal planning, knee-safe activity options, or managing cravings without shame."></textarea>
+
+      <div class="actions">
+        <button class="primary" onclick="buildSnapshot()">Create snapshot</button>
+        <button class="secondary" onclick="loadExample()">Load example</button>
+        <button class="secondary" onclick="clearForm()">Clear</button>
+        <button class="success" onclick="downloadSnapshot()">Download as text</button>
+        <button class="success" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+    </section>
+
+    <section class="snapshot" id="snapshot">
+      <div class="snapshot-head">
+        <h2>My Success Snapshot</h2>
+        <div class="muted" style="color:#d9e3f0;">A patient-centered plan for weight care</div>
+      </div>
+
+      <div class="snapshot-body">
+        <p class="muted">Name / initials</p>
+        <p class="big" id="outName">Not entered yet</p>
+
+        <p class="muted">Why this matters to me</p>
+        <p id="outWhy">Your reason will appear here.</p>
+
+        <p class="muted">What success would look like in <span id="outTime">6 months</span></p>
+        <p id="outOutcomes">Selected outcomes will appear here.</p>
+
+        <p class="muted">My top three goals</p>
+        <ol>
+          <li id="outGoal1">Goal 1</li>
+          <li id="outGoal2">Goal 2</li>
+          <li id="outGoal3">Goal 3</li>
+        </ol>
+
+        <p class="muted">One small next step</p>
+        <p id="outNext">Next step will appear here.</p>
+
+        <p class="muted">Support that would help me</p>
+        <p id="outSupport">Support needs will appear here.</p>
+
+        <div class="signature">
+          <div class="sigline">Patient signature / date</div>
+          <div class="sigline">Clinician signature / date</div>
+        </div>
+
+        <div class="footer">
+          Evidence basis: International obesity outcome consensus efforts recommend measuring patient-reported outcomes alongside traditional weight and health metrics. Relevant patient-reported outcomes include self-esteem, physical function, mental health, social health, eating behavior, stigma, body image, energy, sleep, daily activities, and other quality-of-life domains.
+          <br><br>
+          References: de Vries CEE et al. Obes Rev. 2022;23(8):e13452. doi:10.1111/obr.13452. Mekonnen T et al. EClinicalMedicine. 2025;87:103422. doi:10.1016/j.eclinm.2025.103422.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function val(id) {
+      return document.getElementById(id).value.trim();
+    }
+
+    function selectedOutcomes() {
+      const checked = Array.from(document.querySelectorAll('.pill input:checked')).map(x => x.value);
+      const other = val('other');
+      if (other) checked.push(other);
+      return checked;
+    }
+
+    function buildSnapshot() {
+      document.getElementById('outName').textContent = val('name') || 'Not entered';
+      document.getElementById('outWhy').textContent = val('why') || 'Not entered';
+      document.getElementById('outTime').textContent = val('timeframe') || '6 months';
+
+      const outcomes = selectedOutcomes();
+      document.getElementById('outOutcomes').textContent =
+        outcomes.length ? outcomes.join(', ') : 'No outcomes selected yet';
+
+      document.getElementById('outGoal1').textContent = val('goal1') || 'Not entered';
+      document.getElementById('outGoal2').textContent = val('goal2') || 'Not entered';
+      document.getElementById('outGoal3').textContent = val('goal3') || 'Not entered';
+      document.getElementById('outNext').textContent = val('nextstep') || 'Not entered';
+      document.getElementById('outSupport').textContent = val('support') || 'Not entered';
+
+      document.getElementById('snapshot').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function loadExample() {
+      document.getElementById('name').value = 'A.M.';
+      document.getElementById('why').value = 'I am pursuing weight care because I want more energy, less knee pain, and to feel comfortable participating in family activities again.';
+      document.getElementById('timeframe').value = '6 months';
+
+      document.querySelectorAll('.pill input').forEach(x => x.checked = false);
+      ['More energy', 'Less joint pain', 'Better mobility', 'Improved self-esteem', 'Improved blood sugar or labs']
+        .forEach(item => {
+          const box = Array.from(document.querySelectorAll('.pill input')).find(x => x.value === item);
+          if (box) box.checked = true;
+        });
+
+      document.getElementById('other').value = 'Feel less winded when walking upstairs';
+      document.getElementById('goal1').value = 'Walk 20 minutes without stopping.';
+      document.getElementById('goal2').value = 'Have more energy after work.';
+      document.getElementById('goal3').value = 'Improve blood sugar while feeling less shame around food.';
+      document.getElementById('nextstep').value = 'Walk after dinner three days this week.';
+      document.getElementById('support').value = 'I would like practical meal ideas and knee-safe activity options.';
+      buildSnapshot();
+    }
+
+    function clearForm() {
+      document.querySelectorAll('input, textarea').forEach(el => {
+        if (el.type === 'checkbox') el.checked = false;
+        else el.value = '';
+      });
+      document.getElementById('timeframe').value = '6 months';
+      buildSnapshot();
+    }
+
+    function downloadSnapshot() {
+      buildSnapshot();
+
+      const text = `
+MY SUCCESS SNAPSHOT
+
+Name / initials:
+${document.getElementById('outName').textContent}
+
+Why this matters to me:
+${document.getElementById('outWhy').textContent}
+
+What success would look like:
+${document.getElementById('outOutcomes').textContent}
+
+My top three goals:
+1. ${document.getElementById('outGoal1').textContent}
+2. ${document.getElementById('outGoal2').textContent}
+3. ${document.getElementById('outGoal3').textContent}
+
+One small next step:
+${document.getElementById('outNext').textContent}
+
+Support that would help:
+${document.getElementById('outSupport').textContent}
+
+Evidence basis:
+International obesity outcome consensus efforts recommend measuring patient-reported outcomes alongside traditional weight and health metrics.
+
+References:
+de Vries CEE et al. Obes Rev. 2022;23(8):e13452. doi:10.1111/obr.13452.
+Mekonnen T et al. EClinicalMedicine. 2025;87:103422. doi:10.1016/j.eclinm.2025.103422.
+`;
+
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'success-snapshot.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    buildSnapshot();
+  </script>
+</body>
+</html>
